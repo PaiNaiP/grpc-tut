@@ -1,0 +1,19 @@
+syntax = "proto3"; // Указываем версию синтаксиса gRPC (актуальная — proto3)
+
+package cart; // Название "пакета" — группирует наши типы и сервисы
+
+// Описываем сервис, то есть "API", к которому будем подключаться
+service CartService {
+  rpc RegisterUser (RegisterUserRequest) returns (UserResponse);
+}
+
+// Формат запроса — что клиент отправляет
+message RegisterUserRequest {
+  string name = 1; // имя пользователя
+}
+
+// Формат ответа — что сервер возвращает
+message UserResponse {
+  string id = 1;      // ID нового пользователя
+  string status = 2;  // статус регистрации
+}
